@@ -1,0 +1,25 @@
+{
+  "name": "mygreenapi",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000m\u0000y\u0000g\u0000r\u0000e\u0000e\u0000n\u0000-\u0000A\u0000P\u0000I\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zetsuga/mygreen-API.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zetsuga/mygreen-API/issues"
+  },
+  "homepage": "https://github.com/Zetsuga/mygreen-API#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15"
+  }
+}
