@@ -7,11 +7,11 @@ let respuesta ={};
 
 function getMediciones(request,response){
     if(request.query.id_medicion ==null){
-        param = [request.query.id_medicion];
-        sql = "SELECT * FROM mediciones WHERE id_medicion = ?";
-    }else{
         param = [];
         sql = "SELECT * FROM mediciones";
+    }else{
+        param = [request.query.id_medicion];
+        sql = "SELECT * FROM mediciones WHERE id_medicion = ?";
     }
 
     connection.query(sql,param,function(err,result){
