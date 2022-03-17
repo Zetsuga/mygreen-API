@@ -43,7 +43,7 @@ function postMediciones(request,response){
     let hora = `${date.getHours}:${date.getMinutes}+${date.getSeconds}`;
     let fecha = `${date.getDay}-${date.getMonth}-${date.getFullYear}`;
     console.log(hora + fecha)
-    param = [1,1,temp.temperatura,temp.humedad,temp.tensionmatricial,date,date.getTime()];
+    param = [1,1,temp.temperatura,temp.humedad,temp.tensionmatricial,date,date.getUTCHours()];
     sql = "INSERT INTO mediciones(id_usuario,id_finca,temperatura,humedad,tensionmatricial"+
         ",fecha,hora) VALUE (?)";
 
