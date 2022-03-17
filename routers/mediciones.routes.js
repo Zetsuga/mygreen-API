@@ -5,6 +5,6 @@ const router = Router();
 
 router.get("/mediciones",MedicionesCtrl.getMediciones);
 
-router.post("/mediciones",MedicionesCtrl.postMediciones);
+router.get("/insertar",MedicionesCtrl.postMediciones);
 
 module.exports = router;

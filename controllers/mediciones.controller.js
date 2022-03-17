@@ -38,11 +38,10 @@ function getMediciones(request,response){
 }
 
 function postMediciones(request,response){
-    let temp = request.body; 
-    param = [temp.id_usuario,temp.id_finca,temp.temperatura,temp.humedad,temp.tensionmatricial
-        ,temp.fecha,temp.hora];
-    sql = "INSERT INTO mediciones(id_usuario,id_finca,temperatura,humedad,tensionmatricial"+
-        ",fecha,hora) VALUE (?)";
+    let temp = request.query; 
+    param = [temp.temperatura,temp.humedad,temp.tensionmatricial];
+    sql = "INSERT INTO mediciones(1,1,temperatura,humedad,tensionmatricial"+
+        ",CURRENT_DAY(),CURRENT_TIME()) VALUE (?)";
 
     connection.query(sql,[param],function(err,result){
         if(err){
