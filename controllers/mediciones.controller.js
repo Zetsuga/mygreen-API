@@ -42,7 +42,7 @@ function postMediciones(request,response){
     let date = new Date();
     let hora = `${date.getHours}:${date.getMinutes}+${date.getSeconds}`;
     let fecha = `${date.getDay}-${date.getMonth}-${date.getFullYear}`;
-    param = [1,1,temp.temperatura,temp.humedad,temp.tensionmatricial,fecha,hora];
+    param = [1,1,temp.temperatura,temp.humedad,temp.tensionmatricial,"CURRENT_DATE()","CURRENT_TIME()"];
     sql = "INSERT INTO mediciones(id_usuario,id_finca,temperatura,humedad,tensionmatricial"+
         ",fecha,hora) VALUE (?)";
 
