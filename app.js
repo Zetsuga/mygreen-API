@@ -4,6 +4,7 @@ const cors = require("cors");
 
 //Configuración de las rutas
 let medicionesRoute = require("./routers/mediciones.routes");
+let loginsRoute = require("./routers/login.routes");
 
 //Configuración de la API
 app.use(cors());
@@ -13,5 +14,6 @@ app.set("port", process.env.PORT || 300);
 
 //RUTAS
 app.use(medicionesRoute);
+app.use(loginsRoute);
 
 module.exports = app;
