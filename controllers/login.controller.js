@@ -6,7 +6,7 @@ let param;
 let respuesta ={};
 
 function postLogin(request,response){
-    param = [request.body.email,request.body.usuario];
+    param = [request.body.email,request.body.contrasenia];
     sql = "SELECT * FROM usuario WHERE email = ? AND contrasenia = ?";
 
     connection.query(sql,param,function(err,result){

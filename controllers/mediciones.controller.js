@@ -6,14 +6,15 @@ let param;
 let respuesta ={};
 
 function getMediciones(request,response){
-    if(request.query.id_medicion ==null){
+    if(request.query.inicio == null && request.body.fin == null){
         param = [];
-        sql = "SELECT * FROM mediciones";
+        date = new Date();
+        sql = `SELECT * FROM mediciones where fecha > '${date.getFullYear() + "-01-01"}'`;
     }else{
-        param = [request.query.id_medicion];
-        sql = "SELECT * FROM mediciones WHERE id_medicion = ?";
+        param = [request.query.inicio,request.query.fin];
+        sql = "SELECT * FROM mediciones WHERE (fecha BETWEEN ? AND ?)";
     }
-
+    console.log(sql +param)
     connection.query(sql,param,function(err,result){
         if(err){
             console.log(err)

@@ -5,12 +5,15 @@ let sql;
 let param;
 let respuesta ={};
 
-function getUsuario(request,response){
-    param = [request.query.id_finca];
-    sql = "SELECT usu.* FROM usuario AS usu "+
-    "JOIN usuarios_fincas AS usuf ON (usu.id_usuario = usuf.id_usuario)" +
-    "JOIN finca AS finc ON (finc.id_finca = usuf.id_finca)"+
-    "WHERE usuf.id_finca = ?";
+function getTarea(request,response){
+    if(request.query.id_tarea == null){
+        param = [request.query.id_finca];
+        sql = "SELECT * FROM tareas WHERE id_finca = ?";
+    }else{
+        param = [request.query.id_tarea];
+        sql = "SELECT * FROM tareas WHERE id_tarea = ?";
+    }
+    
 
     connection.query(sql,param,function(err,result){
         if(err){
@@ -18,7 +21,7 @@ function getUsuario(request,response){
             respuesta = {
                 error: true,
                 codigo: 200,
-                mensaje: "Usuarios no encontrados",
+                mensaje: "Tarea no encontrada",
                 titulo:"Error al buscar",
                 resultado : "-1"
             }   
@@ -26,7 +29,7 @@ function getUsuario(request,response){
             respuesta = {
                 error: false,
                 codigo: 200,
-                mensaje: `Lista de usuario encontrada`,
+                mensaje: `Lista de tareas encontrada`,
                 titulo:"busqueda satisfactoria",
                 resultado : result
             }  
@@ -35,10 +38,10 @@ function getUsuario(request,response){
     })
 }
 
-function postUsuario(request,response){
-    let {nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,rol,num_cuenta} = request.body;
-    param = [nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,rol,num_cuenta];
-    sql = "INSERT INTO usuario(nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,rol,num_cuenta) VALUES ";
+function postTarea(request,response){
+    let {id_usuario,id_finca,fecha,prioridad,descripcion} = request.body;
+    param = [id_usuario,id_finca,fecha,prioridad,descripcion];
+    sql = "INSERT INTO tareas(id_usuario,id_finca,fecha,prioridad,descripcion) VALUES ";
 
     connection.query(sql,param,function(err,result){
         if(err){
@@ -46,7 +49,7 @@ function postUsuario(request,response){
             respuesta = {
                 error: true,
                 codigo: 200,
-                mensaje: "Usuario no guardado",
+                mensaje: "Tarea no guardada",
                 titulo:"Error al guardar",
                 resultado : "-1"
             }   
@@ -54,22 +57,20 @@ function postUsuario(request,response){
             respuesta = {
                 error: false,
                 codigo: 200,
-                mensaje: `Usuario guardado`,
+                mensaje: `Tarea guardada con la id ${result.insertId}`,
                 titulo:"Guardado satisfactorio",
-                resultado : result.affectedRows
+                resultado : result.insertId
             }  
         }
         response.send(respuesta);
     })
 }
 
-function putUsuario(request,response){
-
-    let {id_usuario,nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,rol,num_cuenta} = request.body;
-    param = [nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,rol,num_cuenta,id_usuario];
-    sql = "UPDATE usuario SET nombre = COALESCE(?,nombre),apellidos = COALESCE(?,apellidos), telefono = COALESCE(?,telefono)" +
-        ", direccion = COALESCE(?,direccion), cp = COALESCE(?,cp), poblacion = COALESCE(?,poblacion), ciudad = COALESCE(?,ciudad)"+
-        ", rol = COALESCE(?,rol), num_cuenta = COALESCE(?,num_cuenta) WHERE id_usuario = ?";
+function putTarea(request,response){
+    let {id_usuario,id_finca,fecha,prioridad,descripcion,id_tarea} = request.body;
+    param = [id_usuario,id_finca,fecha,prioridad,descripcion,id_tarea];
+    sql = "UPDATE tareas SET id_usuario = COALESCE(?,id_usuario),id_finca = COALESCE(?,id_finca), fecha = COALESCE(?,fecha)" +
+        ", prioridad = COALESCE(?,prioridad), descripcion = COALESCE(?,descripcion) WHERE id_tarea = ?";
 
     connection.query(sql,param,function(err,result){
         if(err){
@@ -77,7 +78,7 @@ function putUsuario(request,response){
             respuesta = {
                 error: true,
                 codigo: 200,
-                mensaje: "Usuario no modificado",
+                mensaje: "Tarea no encontrada",
                 titulo:"Error al modificar",
                 resultado : "-1"
             }   
@@ -85,7 +86,7 @@ function putUsuario(request,response){
             respuesta = {
                 error: false,
                 codigo: 200,
-                mensaje: `Usuario modificado`,
+                mensaje: `Tarea modificada`,
                 titulo:"Modificado satisfactorio",
                 resultado : result.affectedRows
             }  
@@ -94,9 +95,9 @@ function putUsuario(request,response){
     })
 }
 
-function delUsuario(request,response){
-    param = [request.query.id_usuario];
-    sql = "DELETE FROM usuario WHERE id_usuario = ?";
+function delTarea(request,response){
+    param = [request.query.id_tarea];
+    sql = "DELETE FROM tareas WHERE id_tarea = ?";
 
     connection.query(sql,param,function(err,result){
         if(err){
@@ -104,7 +105,7 @@ function delUsuario(request,response){
             respuesta = {
                 error: true,
                 codigo: 200,
-                mensaje: "Usuario no encontrado",
+                mensaje: "Tarea no encontrado",
                 titulo:"Error al borrar",
                 resultado : "-1"
             }   
@@ -112,7 +113,7 @@ function delUsuario(request,response){
             respuesta = {
                 error: false,
                 codigo: 200,
-                mensaje: `Usuario borrado`,
+                mensaje: `Tarea borrada`,
                 titulo:"Borrado satisfactorio",
                 resultado : result.affectedRows
             }  
@@ -121,4 +122,4 @@ function delUsuario(request,response){
     })
 }
 
-module.exports = {getUsuario,postUsuario,putUsuario,delUsuario}
+module.exports = {getTarea,postTarea,putTarea,delTarea}
