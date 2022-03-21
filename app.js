@@ -9,6 +9,7 @@ let usuariosRoute = require("./routers/usuario.routes");
 let incidenciasRouter = require("./routers/incidencias.routes");
 let partesRouter = require("./routers/partes.routes");
 let ficharRouter = require("./routers/fichar.routes");
+let nominasRoute = require("./routers/nominas.routes");
 
 //Configuración de la API
 app.use(cors());
@@ -23,5 +24,6 @@ app.use(usuariosRoute);
 app.use(incidenciasRouter);
 app.use(partesRouter);
 app.use(ficharRouter);
+app.use(nominasRoute);
 
 module.exports = app;
