@@ -6,6 +6,9 @@ const cors = require("cors");
 let medicionesRoute = require("./routers/mediciones.routes");
 let loginsRoute = require("./routers/login.routes");
 let usuariosRoute = require("./routers/usuario.routes");
+let incidenciasRouter = require("./routers/incidencias.routes");
+let partesRouter = require("./routers/partes.routes");
+let ficharRouter = require("./routers/fichar.routes");
 
 //Configuración de la API
 app.use(cors());
@@ -17,5 +20,8 @@ app.set("port", process.env.PORT || 300);
 app.use(medicionesRoute);
 app.use(loginsRoute);
 app.use(usuariosRoute);
+app.use(incidenciasRouter);
+app.use(partesRouter);
+app.use(ficharRouter);
 
 module.exports = app;
