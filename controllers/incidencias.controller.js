@@ -15,7 +15,7 @@ function getIncidencias(request,response){
         param=[request.query.id_incidencia];
         sql = "SELECT * FROM incidencias WHERE id_incidencia = ?"
     }
-
+    console.log(sql +param)
     connection.query(sql,param,function(err,result){
         if(err){
             console.log(err);
