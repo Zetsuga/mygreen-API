@@ -20,13 +20,24 @@ function postLogin(request,response){
                 resultado : "-1"
             }   
         }else{
-            respuesta = {
-                error: false,
-                codigo: 200,
-                mensaje: `Login correcto`,
-                titulo:"Login correct",
-                resultado : result
-            }  
+            if(result.length>0){
+                respuesta = {
+                    error: false,
+                    codigo: 200,
+                    mensaje: `Login correcto`,
+                    titulo:"Login correct",
+                    resultado : result
+                } 
+            }else{
+                respuesta = {
+                    error: true,
+                    codigo: 200,
+                    mensaje: `Login incorrecto`,
+                    titulo:"error en el login",
+                    resultado : result
+                } 
+            }
+             
         }
         response.send(respuesta);
     })
