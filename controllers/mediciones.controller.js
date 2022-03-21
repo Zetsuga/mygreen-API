@@ -10,7 +10,7 @@ function getMediciones(request,response){
         param = [];
         date = new Date();
         //sql = `SELECT * FROM mediciones where fecha > '${date.getFullYear() + "-"+ (date.getMonth()+1) +"-01"}' ORDER BY fecha ASC`;
-        sql = `SELECT * FROM mediciones where fecha > <= NOW() AND fecha >= date_add(NOW(), INTERVAL -7 DAY)`;
+        sql = `SELECT * FROM mediciones where fecha<= NOW() AND fecha >= date_add(NOW(), INTERVAL -7 DAY)`;
     }else{
         param = [request.query.inicio,request.query.fin];
         sql = "SELECT * FROM mediciones WHERE (fecha BETWEEN ? AND ?)";
