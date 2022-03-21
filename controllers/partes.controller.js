@@ -6,10 +6,10 @@ let param;
 let respuesta ={};
 
 function getTarea(request,response){
-    if(!request.query.id_finca == null){
+    if(request.query.id_finca != null){
         param = [request.query.id_finca];
         sql = "SELECT * FROM tareas WHERE id_finca = ?";
-    }else if(!request.query.id_usuario == null){
+    }else if(request.query.id_usuario != null){
         param = [request.query.id_usuario];
         sql = "SELECT * FROM tareas WHERE id_usuario = ?";
     }else{
