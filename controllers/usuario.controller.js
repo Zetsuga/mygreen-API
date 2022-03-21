@@ -6,11 +6,20 @@ let param;
 let respuesta ={};
 
 function getUsuario(request,response){
-    param = [request.query.id_finca];
-    sql = "SELECT usu.* FROM usuario AS usu "+
-    "JOIN usuarios_fincas AS usuf ON (usu.id_usuario = usuf.id_usuario)" +
-    "JOIN finca AS finc ON (finc.id_finca = usuf.id_finca)"+
-    "WHERE usuf.id_finca = ?";
+    if(request.query.id_usuario !=null){
+        param = [request.query.id_usuario];
+        sql = "SELECT * FROM usuario AS usu "+
+        "JOIN usuarios_fincas AS usuf ON (usu.id_usuario = usuf.id_usuario)" +
+        "JOIN finca AS finc ON (finc.id_finca = usuf.id_finca)"+
+        "WHERE usu.id_usuario = ?";
+    }else{
+        param = [request.query.id_finca];
+        sql = "SELECT usu.* FROM usuario AS usu "+
+        "JOIN usuarios_fincas AS usuf ON (usu.id_usuario = usuf.id_usuario)" +
+        "JOIN finca AS finc ON (finc.id_finca = usuf.id_finca)"+
+        "WHERE usuf.id_finca = ?";
+    }
+    
 
     connection.query(sql,param,function(err,result){
         if(err){
