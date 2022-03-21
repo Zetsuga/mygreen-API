@@ -9,7 +9,7 @@ function getMediciones(request,response){
     if(request.query.inicio == null && request.body.fin == null){
         param = [];
         date = new Date();
-        sql = `SELECT * FROM mediciones where fecha > '${date.getFullYear() + "-01-01"}'`;
+        sql = `SELECT * FROM mediciones where fecha > '${date.getFullYear() + "-"+ (date.getMonth()+1) +"-01"}'`;
     }else{
         param = [request.query.inicio,request.query.fin];
         sql = "SELECT * FROM mediciones WHERE (fecha BETWEEN ? AND ?)";
