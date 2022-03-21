@@ -8,11 +8,11 @@ let respuesta ={};
 function getIncidencias(request,response){
     if(request.query.id_finca != null){
         //Consulta para todas las inc de la finca.
-        param[request.query.id_finca];
+        param=[request.query.id_finca];
         sql = "SELECT * FROM incidencias WHERE id_finca=?";
     }else{
         //Mostramos la incidencia que nos piden.
-        param[request.query.id_incidencia];
+        param=[request.query.id_incidencia];
         sql = "SELECT * FROM incidencias WHERE id_incidencia = ?"
     }
 
