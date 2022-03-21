@@ -6,10 +6,10 @@ let param;
 let respuesta ={};
 
 function getIncidencias(request,response){
-    if(request.query.id_incidencia == null && request.query.id_usuario != null && request.query.id_finca != null){
-        //Consulta para todas las inc del usuario.
-        param[request.query.id_usuario, request.query.id_finca];
-        sql = "SELECT * FROM incidencias WHERE id_usuario = ? AND id_finca=?";
+    if(request.query.id_finca != null){
+        //Consulta para todas las inc de la finca.
+        param[request.query.id_finca];
+        sql = "SELECT * FROM incidencias WHERE id_finca=?";
     }else{
         //Mostramos la incidencia que nos piden.
         param[request.query.id_incidencia];
