@@ -73,14 +73,8 @@ function postIncidencia(request,response){
 
 function putIncidencia(request,response){
     
-    param =[request.body.id_usuario,
-            request.body.id_finca,
-            request.body.fecha,
-            request.body.estado,
-            request.body.descripcion,
-            request.body.id_incidencia];
-    sql = "UPDATE incidencias SET id_usuario = COALESCE(?,id_usuario), id_finca = COALESCE(?,id_finca), fecha = COALESCE(?,fecha),"+
-    +"estado = COALESCE(?,estado), descripcion = COALESCE(?,descripcion) WHERE id_incidencia = ?";
+    param =[request.body.id_incidencia];
+    sql = "UPDATE incidencias SET estado = false WHERE id_incidencia = ?";
 
     connection.query(sql,param,function(err,result){
         if(err){
