@@ -72,7 +72,7 @@ function postIncidencia(request,response){
 }
 
 function putIncidencia(request,response){
-    
+    console.log(request)
     param =[request.body.id_incidencia];
     sql = "UPDATE incidencias SET estado = false WHERE id_incidencia = ?";
     console.log(sql,param)
