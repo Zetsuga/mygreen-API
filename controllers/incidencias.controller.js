@@ -73,30 +73,30 @@ function postIncidencia(request,response){
 
 function putIncidencia(request,response){
     console.log(request)
-    param =[request.body.id_incidencia];
-    sql = "UPDATE incidencias SET estado = false WHERE id_incidencia = ?";
-    console.log(sql,param)
-    connection.query(sql,param,function(err,result){
-        if(err){
-            console.log(err);
-            respuesta = {
-                error: true,
-                codigo: 200,
-                mensaje: "No se ha podido actualizar la incidencia",
-                titulo: "Error al actualizar la Inc",
-                resultado: "-1"
-            }
-        }else{
-            respuesta = {
-                error: false,
-                codigo: 200,
-                mensaje: "Incidencias actualizada correctamente.",
-                titulo: "Inc actualizada",
-                resultado: result.affectedRows
-            }
-        }
-        response.send(respuesta);
-    })
+    // param =[request.body.id_incidencia];
+    // sql = "UPDATE incidencias SET estado = false WHERE id_incidencia = ?";
+    // console.log(sql,param)
+    // connection.query(sql,param,function(err,result){
+    //     if(err){
+    //         console.log(err);
+    //         respuesta = {
+    //             error: true,
+    //             codigo: 200,
+    //             mensaje: "No se ha podido actualizar la incidencia",
+    //             titulo: "Error al actualizar la Inc",
+    //             resultado: "-1"
+    //         }
+    //     }else{
+    //         respuesta = {
+    //             error: false,
+    //             codigo: 200,
+    //             mensaje: "Incidencias actualizada correctamente.",
+    //             titulo: "Inc actualizada",
+    //             resultado: result.affectedRows
+    //         }
+    //     }
+    //     response.send(respuesta);
+    // })
 }
 
 function delIncidencia(request,response){
