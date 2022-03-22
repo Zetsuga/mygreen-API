@@ -75,7 +75,7 @@ function putIncidencia(request,response){
     
     param =[request.body.id_incidencia];
     sql = "UPDATE incidencias SET estado = false WHERE id_incidencia = ?";
-
+    console.log(sql,param)
     connection.query(sql,param,function(err,result){
         if(err){
             console.log(err);
