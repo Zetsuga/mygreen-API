@@ -48,7 +48,7 @@ function postUsuario(request,response){
     console.log(request.body)
     let {nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,rol,num_cuenta,email,contrasenia} = request.body;
     param = [nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,rol,num_cuenta,email,contrasenia];
-    sql = "INSERT INTO usuario(nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,rol,num_cuenta,email,contrasenia) VALUES ";
+    sql = "INSERT INTO usuario(nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,rol,num_cuenta,email,contrasenia) VALUES ?";
 console.log(sql,param)
     connection.query(sql,param,function(err,result){
         if(err){
