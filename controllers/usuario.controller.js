@@ -19,7 +19,7 @@ function getUsuario(request,response){
         "JOIN finca AS finc ON (finc.id_finca = usuf.id_finca)"+
         "WHERE usuf.id_finca = ?";
     }
-    
+    console.log(sql,param)
 
     connection.query(sql,param,function(err,result){
         if(err){
@@ -48,7 +48,7 @@ function postUsuario(request,response){
     let {nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,rol,num_cuenta,email,contrasenia} = request.body;
     param = [nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,contrasenia,rol,num_cuenta,email];
     sql = "INSERT INTO usuario (nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,contrasenia,rol,num_cuenta,email) VALUE (?)";
-console.log(sql,param)
+
     connection.query(sql,[param],function(err,result){
         if(err){
             console.log(err)
