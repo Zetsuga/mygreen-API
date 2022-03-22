@@ -45,10 +45,9 @@ function getUsuario(request,response){
 }
 
 function postUsuario(request,response){
-    console.log(request.body)
     let {nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,rol,num_cuenta,email,contrasenia} = request.body;
-    param = [nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,rol,num_cuenta,email,contrasenia];
-    sql = "INSERT INTO usuario(nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,rol,num_cuenta,email,contrasenia) VALUES ?";
+    param = [nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,contrasenia,rol,num_cuenta,email];
+    sql = "INSERT INTO usuario(nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,contrasenia,rol,num_cuenta,email) VALUE ?";
 console.log(sql,param)
     connection.query(sql,param,function(err,result){
         if(err){
@@ -66,7 +65,7 @@ console.log(sql,param)
                 codigo: 200,
                 mensaje: `Usuario guardado`,
                 titulo:"Guardado satisfactorio",
-                resultado : result.affectedRows
+                resultado : result.insertId
             }  
         }
         response.send(respuesta);
