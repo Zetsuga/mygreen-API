@@ -103,6 +103,7 @@ function putUsuario(request,response){
 }
 
 function delUsuario(request,response){
+    console.log(request.body)
     param = [request.query.id_usuario];
     sql = "DELETE FROM usuario WHERE id_usuario = ?";
     console.log(sql,param)
