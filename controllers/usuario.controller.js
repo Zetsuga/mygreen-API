@@ -19,7 +19,6 @@ function getUsuario(request,response){
         "JOIN finca AS finc ON (finc.id_finca = usuf.id_finca)"+
         "WHERE usuf.id_finca = ?";
     }
-    console.log(sql,param)
 
     connection.query(sql,param,function(err,result){
         if(err){
@@ -106,7 +105,7 @@ function putUsuario(request,response){
 function delUsuario(request,response){
     param = [request.query.id_usuario];
     sql = "DELETE FROM usuario WHERE id_usuario = ?";
-
+    console.log(sql,param)
     connection.query(sql,param,function(err,result){
         if(err){
             console.log(err)
