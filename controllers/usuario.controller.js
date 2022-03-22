@@ -45,6 +45,7 @@ function getUsuario(request,response){
 }
 
 function postUsuario(request,response){
+    console.log(request)
     let {nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,rol,num_cuenta} = request.body;
     param = [nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,rol,num_cuenta];
     sql = "INSERT INTO usuario(nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,rol,num_cuenta) VALUES ";
