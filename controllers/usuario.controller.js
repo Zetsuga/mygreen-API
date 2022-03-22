@@ -45,11 +45,11 @@ function getUsuario(request,response){
 }
 
 function postUsuario(request,response){
-    console.log(request)
+    console.log(request.body)
     let {nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,rol,num_cuenta} = request.body;
     param = [nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,rol,num_cuenta];
     sql = "INSERT INTO usuario(nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,rol,num_cuenta) VALUES ";
-
+console.log(sql,param)
     connection.query(sql,param,function(err,result){
         if(err){
             console.log(err)
