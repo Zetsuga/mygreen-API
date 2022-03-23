@@ -17,7 +17,7 @@ function getUsuario(request,response){
         sql = "SELECT usu.* FROM usuario AS usu "+
         "JOIN usuarios_fincas AS usuf ON (usu.id_usuario = usuf.id_usuario)" +
         "JOIN finca AS finc ON (finc.id_finca = usuf.id_finca)"+
-        "WHERE usuf.id_finca = ?";
+        "WHERE usuf.id_finca = ? AND usu.rol = '4'";
     }
 
     connection.query(sql,param,function(err,result){
