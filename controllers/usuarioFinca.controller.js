@@ -7,9 +7,10 @@ let respuesta ={};
 
 function postUsuarioFinca(request,response){
     let {id_usuario,id_finca} = request.body;
+    console.log(request.body)
     param = [id_usuario,id_finca];
     sql = "INSERT INTO usuarios_fincas (id_usuario,id_finca) VALUE (?)";
-
+    console.log(sql,param);
     connection.query(sql,[param],function(err,result){
         if(err){
             console.log(err)
