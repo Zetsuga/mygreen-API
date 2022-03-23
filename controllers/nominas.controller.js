@@ -6,7 +6,7 @@ let param;
 let respuesta ={};
 
 function getNomina(request, response){
-    param = [request.query.id_nomina];
+    param = [request.query.id_usuario];
     sql = "SELECT * FROM nominas WHERE id_usuario = ?";
 
 
