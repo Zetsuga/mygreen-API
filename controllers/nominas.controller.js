@@ -9,7 +9,7 @@ function getNomina(request, response){
     param = [request.query.id_usuario];
     sql = "SELECT * FROM nominas WHERE id_usuario = ?";
 
-
+console.log(sql,param)
 
     connection.query(sql,param,function(err,result){
         if(err){
