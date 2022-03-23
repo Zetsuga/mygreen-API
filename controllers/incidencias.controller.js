@@ -46,9 +46,9 @@ function postIncidencia(request,response){
             request.body.fecha,
             request.body.estado,
             request.body.descripcion];
-    sql = "INSERT INTO incidencias(id_usuario,id_finca,fecha,estado,descripcion) VALUES ?,?,?,?,?";
+    sql = "INSERT INTO incidencias(id_usuario,id_finca,fecha,estado,descripcion) VALUES (?)";
 
-    connection.query(sql,param,function(err,result){
+    connection.query(sql,[param],function(err,result){
         if(err){
             console.log(err);
             respuesta = {
