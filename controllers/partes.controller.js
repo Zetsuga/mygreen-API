@@ -99,7 +99,7 @@ function putTarea(request,response){
 }
 
 function delTarea(request,response){
-    param = [request.query.id_tarea];
+    param = [request.body.id_tarea];
     sql = "DELETE FROM tareas WHERE id_tarea = ?";
 
     connection.query(sql,param,function(err,result){
