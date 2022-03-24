@@ -11,13 +11,13 @@ function getIncidencias(request,response){
         param=[request.query.id_finca];
         sql = "SELECT * FROM incidencias AS i "+
         "JOIN usuario AS u ON(u.id_usuario = i.id_usuario)"+ 
-        " WHERE id_finca=? AND estado = true";
+        " WHERE i.id_finca=? AND i.estado = true";
     }else{
         //Mostramos la incidencia que nos piden.
         param=[request.query.id_incidencia];
         sql = "SELECT * FROM incidencias AS i "+
         "JOIN usuario AS u ON(u.id_usuario = i.id_usuario)"+
-        " WHERE id_incidencia = ?"
+        " WHERE i.id_incidencia = ?"
     }
     console.log(sql +param)
     connection.query(sql,param,function(err,result){
