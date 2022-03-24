@@ -8,7 +8,7 @@ let respuesta ={};
 function getUsuario(request,response){
     if(request.query.id_usuario !=null){
         param = [request.query.id_usuario];
-        sql = "SELECT * FROM usuario AS usu "+
+        sql = "SELECT usu.*,finc.id_finca FROM usuario AS usu "+
         "JOIN usuarios_fincas AS usuf ON (usu.id_usuario = usuf.id_usuario)" +
         "JOIN finca AS finc ON (finc.id_finca = usuf.id_finca)"+
         "WHERE usu.id_usuario = ?";
