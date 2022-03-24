@@ -36,9 +36,9 @@ function getFichar(request,response){
 }
 
 function postFichar(request,response){
-    let {id_usuario,entrada,salida} = request.body;
-    param = [id_usuario,entrada,salida];
-    sql = "INSERT INTO fichaje(id_usuario,entrada,salida) VALUES ?";
+    let {id_usuario,entrada,salida,fecha} = request.body;
+    param = [id_usuario,entrada,salida,fecha];
+    sql = "INSERT INTO fichaje(id_usuario,entrada,salida,fecha) VALUES ?";
 
     connection.query(sql,param,function(err,result){
         if(err){
