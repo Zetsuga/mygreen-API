@@ -7,7 +7,7 @@ let respuesta ={};
 
 function getFichar(request,response){
     
-    param = [request.query.id_tarea];
+    param = [request.query.id_usuario];
     sql = "SELECT * FROM fichaje WHERE id_usuario = ?";
     
     
