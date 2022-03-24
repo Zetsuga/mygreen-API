@@ -44,9 +44,9 @@ function getTarea(request,response){
 function postTarea(request,response){
     let {id_usuario,id_finca,fecha,prioridad,descripcion} = request.body;
     param = [id_usuario,id_finca,fecha,prioridad,descripcion];
-    sql = "INSERT INTO tareas(id_usuario,id_finca,fecha,prioridad,descripcion) VALUES ";
+    sql = "INSERT INTO tareas(id_usuario,id_finca,fecha,prioridad,descripcion) VALUES (?)";
 
-    connection.query(sql,param,function(err,result){
+    connection.query(sql,[param],function(err,result){
         if(err){
             console.log(err)
             respuesta = {
