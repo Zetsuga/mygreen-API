@@ -9,11 +9,15 @@ function getIncidencias(request,response){
     if(request.query.id_finca != null){
         //Consulta para todas las inc de la finca.
         param=[request.query.id_finca];
-        sql = "SELECT * FROM incidencias WHERE id_finca=? AND estado = true";
+        sql = "SELECT * FROM incidencias AS i"+
+        "JOIN usuarios AS u ON(u.id_usuario = i.id_usuario)"+ 
+        " WHERE id_finca=? AND estado = true";
     }else{
         //Mostramos la incidencia que nos piden.
         param=[request.query.id_incidencia];
-        sql = "SELECT * FROM incidencias WHERE id_incidencia = ?"
+        sql = "SELECT * FROM incidencias AS i"+
+        "JOIN usuarios AS u ON(u.id_usuario = i.id_usuario)"+
+        " WHERE id_incidencia = ?"
     }
     console.log(sql +param)
     connection.query(sql,param,function(err,result){
