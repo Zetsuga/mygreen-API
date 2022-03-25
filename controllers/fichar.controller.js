@@ -76,6 +76,7 @@ function putFichar(request,response){
                 mensaje: "Hora de salida no actualizada",
                 titulo:"Error al modificar",
                 resultado : "-1"
+                
             }   
         }else{
             respuesta = {
