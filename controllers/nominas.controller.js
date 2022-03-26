@@ -4,6 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const multipart = require('connect-multiparty');
 const cors = require('cors');
+const res = require("express/lib/response");
 
 const app = express();
 
@@ -22,10 +23,13 @@ app.use(bodyParser.urlencoded({
 }));
 
 //endpoint para subir archivos
+// function postNominaFichero(request,response){
+//     response.json({
+//         'mensaje': "Fichero subido correctamente"
+//     });
+// }
 function postNominaFichero(request,response){
-    response.json({
-        'mensaje': "Fichero subido correctamente"
-    });
+    response.send({data:"0k"})
 }
 
 
