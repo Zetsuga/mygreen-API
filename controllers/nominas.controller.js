@@ -1,9 +1,32 @@
 const { response } = require("express");
 const connection = require("../database");
+const express = require('express');
+const bodyParser = require('body-parser');
+const multipart = require('connect-multiparty');
+
+const app = express();
 
 let sql;
 let param;
 let respuesta ={};
+
+const multiPartMiddleware = multipart({
+    uploadDir: './subidas'
+});
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended:true
+}));
+
+//endpoint para subir archivos
+function postNominaFichero(request,response){
+    response.json({
+        'mensaje': "Fichero subido correctamente"
+    });
+}
+
+
 
 function getNomina(request, response){
     param = [request.query.id_usuario];
@@ -88,4 +111,4 @@ function delNomina(request,response){
     })
 }
 
-module.exports = {getNomina, postNomina, delNomina}
+module.exports = {getNomina, postNomina, delNomina, postNominaFichero}
