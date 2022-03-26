@@ -32,7 +32,6 @@ function postNominaFichero(request,response){
     response.send({data:"0k"})
 }
 
-
 function getNomina(request, response){
     param = [request.query.id_usuario];
     sql = "SELECT * FROM nominas WHERE id_usuario = ?";
