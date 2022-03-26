@@ -22,17 +22,12 @@ app.use(bodyParser.urlencoded({
 }));
 
 //endpoint para subir archivos
-// function postNominaFichero(request,response){
-//     response.json({
-//         'mensaje': "Fichero subido correctamente"
-//     });
-// }
+function postNominaFichero(request,response){
+    response.json({
+        'mensaje': "Fichero subido correctamente"
+    });
+}
 
-app.post('/subirnominas', multiPartMiddleware, (req,res)=>{
-    res.json({
-                'mensaje': "Fichero subido correctamente"
-            });
-})
 
 function getNomina(request, response){
     param = [request.query.id_usuario];
