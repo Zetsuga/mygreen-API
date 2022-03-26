@@ -3,6 +3,7 @@ const connection = require("../database");
 const express = require('express');
 const bodyParser = require('body-parser');
 const multipart = require('connect-multiparty');
+const cors = require('cors');
 
 const app = express();
 
@@ -14,6 +15,7 @@ const multiPartMiddleware = multipart({
     uploadDir: './subidas'
 });
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended:true
