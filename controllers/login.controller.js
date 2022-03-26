@@ -7,7 +7,10 @@ let respuesta ={};
 
 function postLogin(request,response){
     param = [request.body.email,request.body.contrasenia];
-    sql = "SELECT * FROM usuario WHERE email = ? AND contrasenia = ?";
+    sql = "SELECT usu.*,finc.id_finca FROM usuario AS usu "+
+        "JOIN usuarios_fincas AS usuf ON (usu.id_usuario = usuf.id_usuario) " +
+        "JOIN finca AS finc ON (finc.id_finca = usuf.id_finca) "+
+        "WHERE email = ? AND contrasenia = ?";
 
     connection.query(sql,param,function(err,result){
         if(err){
