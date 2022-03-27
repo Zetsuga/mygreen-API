@@ -24,6 +24,7 @@ function postLogin(request,response){
                 resultado : "-1"
             }   
         }else{
+            console.log(result)
             if(result.length>0){
                 respuesta = {
                     error: false,
@@ -35,7 +36,7 @@ function postLogin(request,response){
             }else{
                 //let compare = bcrypt.compareSync(request.body.contrasenia,result.contrasenia);
                 let compare =false;
-                console.log(result)
+                
                 if(compare){
                     respuesta = {
                         error: true,
