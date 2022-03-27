@@ -47,7 +47,7 @@ function getUsuario(request,response){
 async function postUsuario(request,response){
     let {nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,rol,num_cuenta,email,contrasenia} = request.body;
     let contraseniaHash = await bcrypt.hash(contrasenia,10);
-    console.log(contraseniaHash);
+    
     param = [nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,contraseniaHash,rol,num_cuenta,email];
     sql = "INSERT INTO usuario (nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,contrasenia,rol,num_cuenta,email) VALUE (?)";
 

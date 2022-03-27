@@ -1,5 +1,6 @@
 const { response } = require("express");
 const connection = require("../database");
+const bcrypt = require("bcrypt");
 
 let sql;
 let param;
@@ -32,13 +33,25 @@ function postLogin(request,response){
                     resultado : result
                 } 
             }else{
-                respuesta = {
-                    error: true,
-                    codigo: 200,
-                    mensaje: `Login incorrecto`,
-                    titulo:"error en el login",
-                    resultado : result
-                } 
+                let compare = await bcrypt.compare(request.body.contrasenia,result[0].contrasenia);
+                if(compare){
+                    respuesta = {
+                        error: true,
+                        codigo: 200,
+                        mensaje: `Login incorrecto`,
+                        titulo:"error en el login",
+                        resultado : result
+                    } 
+                }else{
+                    respuesta = {
+                        error: false,
+                        codigo: 200,
+                        mensaje: `Contraseña no válida`,
+                        titulo:"Login incorrecto",
+                        resultado : -1
+                    }
+                }
+                
             }
              
         }
