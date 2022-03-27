@@ -24,8 +24,8 @@ function postLogin(request,response){
                 resultado : "-1"
             }   
         }else{
-            console.log(result)
-            if(result.length>0){
+            let compare = bcrypt.compareSync(request.body.contrasenia,result[0].contrasenia)
+            if(result.length>0 && compare){
                 respuesta = {
                     error: false,
                     codigo: 200,
@@ -34,27 +34,13 @@ function postLogin(request,response){
                     resultado : result
                 } 
             }else{
-                //let compare = bcrypt.compareSync(request.body.contrasenia,result.contrasenia);
-                let compare =false;
-                
-                if(compare){
-                    respuesta = {
-                        error: true,
-                        codigo: 200,
-                        mensaje: `Login incorrecto`,
-                        titulo:"error en el login",
-                        resultado : result
-                    } 
-                }else{
-                    respuesta = {
-                        error: false,
-                        codigo: 200,
-                        mensaje: `Contraseña no válida`,
-                        titulo:"Login incorrecto",
-                        resultado : -1
-                    }
+                respuesta = {
+                    error: false,
+                    codigo: 200,
+                    mensaje: `Contraseña no válida`,
+                    titulo:"Login incorrecto",
+                    resultado : -1
                 }
-                
             }
              
         }
