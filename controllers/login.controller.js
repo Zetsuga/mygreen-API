@@ -33,7 +33,8 @@ function postLogin(request,response){
                     resultado : result
                 } 
             }else{
-                let compare = bcrypt.compareSync(request.body.contrasenia,result.contrasenia);
+                //let compare = bcrypt.compareSync(request.body.contrasenia,result.contrasenia);
+                let compare =false;
                 console.log(result)
                 if(compare){
                     respuesta = {
