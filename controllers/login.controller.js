@@ -6,7 +6,7 @@ let sql;
 let param;
 let respuesta ={};
 
-async function postLogin(request,response){
+function postLogin(request,response){
     param = [request.body.email,request.body.contrasenia];
     sql = "SELECT usu.*,finc.id_finca FROM usuario AS usu "+
         "JOIN usuarios_fincas AS usuf ON (usu.id_usuario = usuf.id_usuario) " +
@@ -33,7 +33,7 @@ async function postLogin(request,response){
                     resultado : result
                 } 
             }else{
-                let compare = await bcrypt.compare(request.body.contrasenia,result[0].contrasenia);
+                let compare = bcrypt.compareSync(request.body.contrasenia,result[0].contrasenia);
                 if(compare){
                     respuesta = {
                         error: true,
