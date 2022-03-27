@@ -12,8 +12,15 @@ let sql;
 let param;
 let respuesta ={};
 
-app.use(cors());
+// const multiPartMiddleware = multipart({
+//     uploadDir: './subidas'
+// });
 
+// app.use(cors());
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({
+//     extended:true
+// }));
 
 //endpoint para subir archivos
 // function postNominaFichero(request,response){
@@ -54,32 +61,31 @@ function getNomina(request, response){
 }
 
 function postNomina(request,response){
-    response.send({data:"0k"});
-    // let {id_usuario, mes, ruta, fecha} = request.body;
-    // param = [id_usuario, mes, ruta, fecha];
-    // sql = "INSERT INTO nominas (id_usuario, mes, ruta, fecha) VALUE ?";
+    let {id_usuario, mes, ruta, fecha} = request.body;
+    param = [id_usuario, mes, ruta, fecha];
+    sql = "INSERT INTO nominas (id_usuario, mes, ruta, fecha) VALUE ?";
 
-    // connection.query(sql,param,function(err,result){
-    //     if(err){
-    //         console.log(err)
-    //         respuesta = {
-    //             error: true,
-    //             codigo: 200,
-    //             mensaje: "Nómina no guardada",
-    //             titulo: "Error al guardar nómina",
-    //             resultado: "-1"
-    //         }
-    //     }else{
-    //         respuesta = {
-    //             error: false,
-    //             codigo: 200,
-    //             mensaje: "Nómina guardada satisfactoriamente",
-    //             titulo: "Nómina guardada correctamente",
-    //             resultado: result
-    //         }
-    //     }
-    //     response.send(respuesta)
-    // })
+    connection.query(sql,param,function(err,result){
+        if(err){
+            console.log(err)
+            respuesta = {
+                error: true,
+                codigo: 200,
+                mensaje: "Nómina no guardada",
+                titulo: "Error al guardar nómina",
+                resultado: "-1"
+            }
+        }else{
+            respuesta = {
+                error: false,
+                codigo: 200,
+                mensaje: "Nómina guardada satisfactoriamente",
+                titulo: "Nómina guardada correctamente",
+                resultado: result
+            }
+        }
+        response.send(respuesta)
+    })
 }
 
 function delNomina(request,response){
