@@ -9,6 +9,7 @@ let respuesta ={};
 async function postLogin(request,response){
 
     let contrasenia = await bcrypt.hash(request.body.contrasenia,10)
+    console.log(contrasenia);
     param = [request.body.email,contrasenia];
     sql = "SELECT usu.*,finc.id_finca FROM usuario AS usu "+
         "JOIN usuarios_fincas AS usuf ON (usu.id_usuario = usuf.id_usuario) " +
