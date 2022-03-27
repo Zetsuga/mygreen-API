@@ -14,7 +14,7 @@ function postLogin(request,response){
         "WHERE email = ? AND contrasenia = ?";
 
     connection.query(sql,param,function(err,result){
-        console.log(result);
+        console.log(result[0].contrasenia);
         if(err){
             console.log(err)
             respuesta = {
