@@ -25,6 +25,7 @@ async function postLogin(request,response){
                 resultado : "-1"
             }   
         }else{
+            console.log(result[0].contrasenia)
             let compare = bcrypt.compareSync(request.body.contrasenia,result[0].contrasenia)
             if(result.length>0 && compare){
                 respuesta = {
