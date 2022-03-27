@@ -6,7 +6,7 @@ let sql;
 let param;
 let respuesta ={};
 
-function postLogin(request,response){
+async function postLogin(request,response){
     param = [request.body.email,request.body.contrasenia];
     sql = "SELECT usu.*,finc.id_finca FROM usuario AS usu "+
         "JOIN usuarios_fincas AS usuf ON (usu.id_usuario = usuf.id_usuario) " +
