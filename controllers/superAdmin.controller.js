@@ -40,3 +40,5 @@ function getSuperAdmin(request,response){
         response.send(respuesta);
     })
 }
+
+module.exports = {getSuperAdmin}
