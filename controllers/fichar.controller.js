@@ -12,7 +12,7 @@ function getFichar(request,response){
         sql = "SELECT * FROM fichaje WHERE id_usuario = ?";
     }else{
         param = [request.query.fecha,request.query.id_usuario];
-        sql = "SELECT * FROM fichaje WHERE entrada = ? and id_usuario = ?"
+        sql = "SELECT * FROM fichaje WHERE fecha = ? and id_usuario = ?"
     }
     
     
