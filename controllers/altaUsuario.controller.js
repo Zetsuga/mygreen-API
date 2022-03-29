@@ -11,7 +11,7 @@ function enviarCorreo(request,response){
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'jjp.desarroladores@gmail.com', // Cambialo por tu email
+            user: 'jjp.desarrolladores@gmail.com', // Cambialo por tu email
             pass: 'jjp2022@.' // Cambialo por tu password
         }
     });
@@ -26,7 +26,7 @@ function enviarCorreo(request,response){
             <strong>Contrasenia:</strong> ${request.body.contrasenia}
         `
     };
-
+    console.
     transporter.sendMail(mailOptions, function (err, info) {
         if (err)
             console.log(err)
