@@ -73,11 +73,11 @@ function postUsuario(request,response){
 
 function putUsuario(request,response){
 
-    let {id_usuario,nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,rol,num_cuenta} = request.body;
-    param = [nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,rol,num_cuenta,id_usuario];
+    let {id_usuario,nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,contrasenia,rol,num_cuenta} = request.body;
+    param = [nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,contrasenia,rol,num_cuenta,id_usuario];
     sql = "UPDATE usuario SET nombre = COALESCE(?,nombre),apellidos = COALESCE(?,apellidos), telefono = COALESCE(?,telefono)" +
         ", direccion = COALESCE(?,direccion), cp = COALESCE(?,cp), poblacion = COALESCE(?,poblacion), ciudad = COALESCE(?,ciudad)"+
-        ", rol = COALESCE(?,rol), num_cuenta = COALESCE(?,num_cuenta) WHERE id_usuario = ?";
+        "contrasenia = COALESCE(?,contrasenia), rol = COALESCE(?,rol), num_cuenta = COALESCE(?,num_cuenta) WHERE id_usuario = ?";
 
     connection.query(sql,param,function(err,result){
         if(err){
