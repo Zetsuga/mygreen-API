@@ -3,7 +3,7 @@ const RecordarCtrl = require("../controllers/recordarPassword.controller");
 
 const router = Router();
 
-router.post("/recordar",RecordarCtrl);
+router.post("/recordar",RecordarCtrl.recordarContrasenia);
 
 
 module.exports = router;
