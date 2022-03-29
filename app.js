@@ -12,7 +12,8 @@ let partesRouter = require("./routers/partes.routes");
 let ficharRouter = require("./routers/fichar.routes");
 let nominasRoute = require("./routers/nominas.routes");
 let superAdminRoute = require("./routers/superAdmin.routes");
-let altaUsuarioRouter = require("./routers/altaUsuario.routes")
+let altaUsuarioRouter = require("./routers/altaUsuario.routes");
+let recordarContrasenia = require("./routers/recordarPassword.routes");
 
 //Configuración de la API
 app.use(cors());
@@ -30,6 +31,7 @@ app.use(partesRouter);
 app.use(ficharRouter);
 app.use(nominasRoute);
 app.use(superAdminRoute);
-app.use(altaUsuarioRouter)
+app.use(altaUsuarioRouter);
+app.use(recordarContrasenia);
 
 module.exports = app;
