@@ -21,8 +21,9 @@ function recordarContrasenia(request,response){
                 titulo:"Error al buscar",
                 resultado : "-1"
             }   
+            response.send(respuesta);
         }else{
-            let usuario = resultado[0];
+            let usuario = result[0];
             let contrasenia = await bcrypt.hash("123456",10);
             param = [contrasenia,result[0].id_usuario];
             sql = "UPDATE usuario SET contrasenia = COALESCE(?,contrasenia) WHERE id_usuario = ?";
