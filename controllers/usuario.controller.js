@@ -74,7 +74,7 @@ async function postUsuario(request,response){
     })
 }
 
-function putUsuario(request,response){
+async function putUsuario(request,response){
 
     let {id_usuario,nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,contrasenia,rol,num_cuenta} = request.body;
 
