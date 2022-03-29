@@ -26,7 +26,7 @@ function enviarCorreo(request,response){
             <strong>Contrasenia:</strong> ${request.body.contrasenia}
         `
     };
-    console.
+    
     transporter.sendMail(mailOptions, function (err, info) {
         if (err)
             console.log(err)
