@@ -8,8 +8,9 @@ let respuesta ={};
 
 
 function recordarContrasenia(request,response){
-    param = [request.query.email];
+    param = [request.body.email];
     sql = "SELECT * FROM usuario WHERE email = ?";
+
 
     connection.query(sql,param,function(err,result){
         console.log(result);
