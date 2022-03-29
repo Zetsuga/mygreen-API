@@ -22,6 +22,7 @@ function recordarContrasenia(request,response){
                 resultado : "-1"
             }   
         }else{
+            let usuario = resultado[0];
             let contrasenia = await bcrypt.hash("123456",10);
             param = [contrasenia,result[0].id_usuario];
             sql = "UPDATE usuario SET contrasenia = COALESCE(?,contrasenia) WHERE id_usuario = ?";
@@ -46,11 +47,11 @@ function recordarContrasenia(request,response){
                 
                     const mailOptions = {
                         from: `”Mygreen” <jjp.desarrolladores@gmil.com>`,
-                        to: result[0].email, // Cambia esta parte por el destinatario
+                        to: usuario.email, // Cambia esta parte por el destinatario
                         subject: "Petición de datos",
                         html: `
-                            <strong>Nombre:</strong> ${result[0].nombre} <br/>
-                            <strong>E-mail:</strong> ${result[0].email} <br/>
+                            <strong>Nombre:</strong> ${usuario.nombre} <br/>
+                            <strong>E-mail:</strong> ${usuario.email} <br/>
                             <strong>Contrasenia:</strong> 123456
                         `
                     };
