@@ -12,8 +12,9 @@ function recordarContrasenia(request,response){
     sql = "SELECT * FROM usuario WHERE email = ?";
 
     connection.query(sql,param,function(err,result){
+        console.log(result);
         if(err){
-            crespuesta = {
+            respuesta = {
                 error: true,
                 codigo: 200,
                 mensaje: "Usuarios no encontrados",
@@ -44,7 +45,7 @@ function recordarContrasenia(request,response){
                 if (err)
                     console.log(err)
                 else
-                    rrespuesta = {
+                    respuesta = {
                         error: false,
                         codigo: 200,
                         mensaje: "Contraseña enviada",
