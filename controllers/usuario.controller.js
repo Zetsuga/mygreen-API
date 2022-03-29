@@ -1,5 +1,6 @@
 const { response } = require("express");
 const connection = require("../database");
+const bcrypt = require('bcrypt');
 
 let sql;
 let param;
@@ -8,7 +9,7 @@ let respuesta ={};
 function getUsuario(request,response){
     if(request.query.id_usuario !=null){
         param = [request.query.id_usuario];
-        sql = "SELECT usu.*,finc.id_finca FROM usuario AS usu "+
+        sql = "SELECT usu.*,finc.id_finca,finc.direccion as fincadireccion FROM usuario AS usu "+
         "JOIN usuarios_fincas AS usuf ON (usu.id_usuario = usuf.id_usuario)" +
         "JOIN finca AS finc ON (finc.id_finca = usuf.id_finca)"+
         "WHERE usu.id_usuario = ?";
@@ -43,9 +44,11 @@ function getUsuario(request,response){
     })
 }
 
-function postUsuario(request,response){
+async function postUsuario(request,response){
     let {nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,rol,num_cuenta,email,contrasenia} = request.body;
-    param = [nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,contrasenia,rol,num_cuenta,email];
+    let contraseniaHash = await bcrypt.hash(contrasenia,10);
+    
+    param = [nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,contraseniaHash,rol,num_cuenta,email];
     sql = "INSERT INTO usuario (nombre,apellidos,telefono,direccion,cp,poblacion,ciudad,contrasenia,rol,num_cuenta,email) VALUE (?)";
 
     connection.query(sql,[param],function(err,result){
