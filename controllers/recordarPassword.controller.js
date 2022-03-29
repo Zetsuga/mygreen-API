@@ -7,12 +7,12 @@ let param;
 let respuesta ={};
 
 
-async function recordarContrasenia(request,response){
+function recordarContrasenia(request,response){
     param = [request.body.email];
     sql = "SELECT * FROM usuario WHERE email = ?";
 
 
-    connection.query(sql,param,function(err,result){
+    connection.query(sql,param, async function(err,result){
         if(err){
             respuesta = {
                 error: true,
