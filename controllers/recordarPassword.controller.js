@@ -22,7 +22,7 @@ function recordarContrasenia(request,response){
                 resultado : "-1"
             }   
         }else{
-            let contrasenia = await bcrypt.hash("123456");
+            let contrasenia = await bcrypt.hash("123456",10);
             param = [contrasenia,result[0].id_usuario];
             sql = "UPDATE usuario SET contrasenia = COALESCE(?,contrasenia) WHERE id_usuario = ?";
             
