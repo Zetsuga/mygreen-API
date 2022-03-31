@@ -41,7 +41,7 @@ async function postFinca(request,response){
     let {direccion,cp,poblacion,provincia,latitud,longitud} = request.body;
     
     param = [direccion,cp,poblacion,provincia,latitud,longitud];
-    sql = "INSERT INTO usuario (direccion,cp,poblacion,provincia,latitud,longitud) VALUE (?)";
+    sql = "INSERT INTO finca (direccion,cp,poblacion,provincia,latitud,longitud) VALUE (?)";
 
     connection.query(sql,[param],function(err,result){
         if(err){
@@ -71,7 +71,7 @@ async function putFinca(request,response){
     let {direccion,cp,poblacion,provincia,latitud,longitud,id_finca} = request.body;
 
     param = [direccion,cp,poblacion,provincia,latitud,longitud,id_finca]
-    sql = "UPDATE usuario SET direccion = COALESCE(?,direccion),cp = COALESCE(?,cp), poblacion = COALESCE(?,poblacion)" +
+    sql = "UPDATE finca SET direccion = COALESCE(?,direccion),cp = COALESCE(?,cp), poblacion = COALESCE(?,poblacion)" +
         ", provincia = COALESCE(?,provincia), latitud = COALESCE(?,latitud), longitud = COALESCE(?,longitud) WHERE id_finca = ?";
 
     connection.query(sql,param,function(err,result){
