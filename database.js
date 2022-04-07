@@ -1,13 +1,9 @@
 const mysql = require("mysql2");
 
 let connection = mysql.createConnection({
-    //host: "database-1.cjsrbfuwxysf.eu-west-3.rds.amazonaws.com",
-    // user: "admin",
-    // password : "JJPD2022",
-    // database : "mygreen"
-    host: "pampanicodns.synology.me/phpMyAdmin",
-    user:"mygreenadmin",
-    password : "MGreenAdm2022",
+    host: "database-1.cjsrbfuwxysf.eu-west-3.rds.amazonaws.com",
+    user: "admin",
+    password : "JJPD2022",
     database : "mygreen"
 })
 
