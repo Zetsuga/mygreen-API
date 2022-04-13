@@ -8,10 +8,10 @@ let respuesta ={};
 function getTarea(request,response){
     if(request.query.id_finca != null){
         param = [request.query.id_finca];
-        sql = "SELECT * FROM tareas AS t JOIN usuario AS u ON (u.id_usuario = t.id_usuario) WHERE t.id_finca = ?";
+        sql = "SELECT * FROM tareas AS t JOIN usuario AS u ON (u.id_usuario = t.id_usuario) WHERE t.id_finca = ? ORDER BY prioridad";
     }else if(request.query.id_usuario != null){
         param = [request.query.id_usuario];
-        sql = "SELECT * FROM tareas AS t JOIN usuario AS u ON (u.id_usuario = t.id_usuario) WHERE t.id_usuario = ?";
+        sql = "SELECT * FROM tareas AS t JOIN usuario AS u ON (u.id_usuario = t.id_usuario) WHERE t.id_usuario = ? ORDER BY prioridad";
     }else{
         param = [request.query.id_tarea];
         sql = "SELECT * FROM tareas AS t JOIN usuario AS u ON (u.id_usuario = t.id_usuario) WHERE t.id_tarea = ?";
